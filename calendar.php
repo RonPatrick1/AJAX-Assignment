@@ -10,15 +10,6 @@ if (isset($_GET["colorArrow"])) {
     setcookie("colorArrow", $_GET["colorArrow"], time() + (86400 * 30), "/");
 }
 
-function connect() {
-    //$connection = new mysqli("127.0.0.1", "tempAccount", "tempApassword", "mysql");
-    $connection = new mysqli("127.0.0.1", "patricro", "patricro", "patricro");
-    if (!$connection || $connection->connect_error) {
-        die('Unable to connect to database [' . $connection->connect_error . ']');
-    }
-    return $connection;
-}
-
 // This line of code can be used to override the value in php.ini and/or .htaccess
 ini_set('display_errors', 1);
 ?>
@@ -102,7 +93,7 @@ for ($x = 1; $x <= $number; $x++) {
         echo '<td class="normalDay" id="' . $cDate . '">';
     }
     echo "<nav id=\"leftNav\">" . $x . "</nav><nav id=\"rightNav\">";
-    echo "<a id=\"" . $cDate . "-new\" onclick=\"onClickFill(this);\" href=\"#openModal\">Add New Event</a>";
+    echo "<a id=\"" . $cDate . "-new\" onclick=\"view.onClickFill(this);\" href=\"#openModal\">Add New Event</a>";
     echo "</nav>";
     echo "<div class=\"bar\"></div>";
     echo "<div id=\"normalDayContent\">";
@@ -193,10 +184,13 @@ echo '<p hidden id="days">' . $number . "</p>\n";
     </div>
 </div>
 
-<script src="resizeTable.js"></script>
+<script src="Calendar-Model.js"></script>
+<script src="Calendar-View.js"></script>
+<script src="Calendar-Controller.js"></script>
+<script src="Calendar.js"></script>
 <script type="text/javascript">
     window.onload = function () {
-        getEvents();
+        calendar();
     }
 </script>
     

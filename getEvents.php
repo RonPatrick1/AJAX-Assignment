@@ -1,8 +1,11 @@
 <?php
 
 function connect() {
+	
     //$connection = new mysqli("127.0.0.1", "tempAccount", "tempApassword", "mysql");
-    $connection = new mysqli("127.0.0.1", "patricro", "patricro", "patricro");
+	//$connection = new mysqli("192.168.1.83", "tempAccount", "tempApassword", "mysql");
+	$connection = new mysqli("127.0.0.1", "patricro", "patricro", "patricro");
+    //$connection = new mysqli("127.0.0.1", "patricro", "patricro", "patricro");
     if (!$connection || $connection->connect_error) {
         die('Unable to connect to database [' . $connection->connect_error . ']');
     }
